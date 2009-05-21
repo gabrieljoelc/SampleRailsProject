@@ -1,0 +1,35 @@
+<table border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td>
+      <img src="<%= @photoset.thumb_link_medium %>" class="reflex idistance5 iborder10 icolorffffff">
+    </td>
+    <td valign="top">
+      Photoset Details: <br />
+      <span style="font-size: 300%; color: #666"><%=h @photoset.title %></span>
+      <!--<p>
+      by <% #= @flickr_user.username %>
+      </p>-->
+      <% unless @photoset.description.blank? %>
+        <p style="margin-top: 30pt; padding:0; margin-bottom: -20pt; font-size: 800%; color: #333; ">&laquo;</p>
+        <p style="padding-left: 10px; margin-bottom: 50px; font-size: 120%; width: 80%; line-height: double; z-index: 10">
+        <%=h @photoset.description %>
+        </p>        
+      <% end %>
+      
+      <p>
+      <span style="font-size: 300%;"><%=h @photoset.photos_num %></span>
+      <span style="font-size: 80%;">Photos</span>
+      </p>
+  	  
+  	  <p>
+      <%= link_to 'Back to all photosets' , photosets_path() %> |
+  	  <%= link_to 'Photos' , photoset_photos_path(@photoset) %>  
+  	  <% #= link_to 'Back to all photosets' , flickr_user_photosets_path(@flickr_user) %> |
+  	  <% #= link_to 'Photos' , photoset_photos_path(@photoset) %>  
+  	  </p>
+    
+    </td>
+  </tr>
+</table>
+
+</table>

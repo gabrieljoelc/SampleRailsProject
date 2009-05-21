@@ -1,0 +1,45 @@
+<!--<span style="font-size: 300%; margin-bottom: 0; padding-bottom: 0;">
+  <% #= @flickr_user.username %>
+</span><br />-->
+<p>photosets<br />
+<span style="font-size: 80%">only first 50 are shown</span>
+</p>
+<% if !@flickr_user.photosets || @flickr_user.photosets.empty? %>
+  <p style="color: #fff">Uh, oh. Lazy user, no photosets found ...</p>
+<% end -%>
+
+<% for photoset in @flickr_user.photosets %>
+  <div 
+    class="photoset" 
+    id="ps_<%= photoset.id %>" >
+    <div style="float:left;">
+    	<img src="<%= photoset.thumb_link %>" class="instant">
+    </div>
+    <div style="float:right;">
+    	<%=h photoset.title %>
+    	<p><%= photoset.photos_num %> photos</p>
+    	<%= link_to 'Details', [@flickr_user,photoset] %> // 
+	<%= link_to 'Photos' , photoset_photos_path(photoset) %>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+<% end %>
+
+<script>
+  var max_zindex = 10;
+  function move_on_top_again() {
+    max_zindex += 10;
+    this.style.zIndex = max_zindex;
+  }
+  
+  function move_on_top(draggable,evt) {
+    setTimeout(move_on_top_again.bind(document.getElementById(draggable.element.id)),10)
+  }
+  <% for photoset in @flickr_user.photosets %>
+    new Draggable("ps_<%= photoset.id %>", { onEnd: move_on_top });
+    var x_<%= photoset.id %> = <%= rand(500) - 250 %>;
+    var y_<%= photoset.id %> = <%= rand(500) - 250 %>;
+    new Effect.Move ($("ps_<%= photoset.id %>"),{ x: x_<%= photoset.id %>, y: y_<%= photoset.id %>, mode: 'relative'});
+  <% end %>
+  
+</script>

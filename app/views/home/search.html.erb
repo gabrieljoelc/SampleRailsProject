@@ -1,0 +1,66 @@
+<div style="float:left" >
+  <span style="display:block;width:500px">&nbsp;</span>
+  <div id="coverFlowId">
+    
+  </div>
+</div>
+<div style="float:left; padding-left: 10px;">
+  <table style="border: 0">
+    <tr>  
+      <td>
+        <h1 style="margin-bottom: 2px; padding-bottom:0">RailTrackr</h1>
+        <p>A Rails 2.0 Flickr browser</p>
+      </td>
+      <td><%= image_tag "logo.jpg" , :style => "border: 2px solid #fff; margin-left: 10px" %></td>
+    </tr>
+  </table>
+  
+  <p style="margin: 0;padding: 0; margin-top: 100px">Username: </p>
+  <p style="color: red"><%= flash[:notice] %></p>
+  <% form_for :flickr_user , :url => { :controller => "flickr_users" , :action => "create" } do |f| %>
+  	<%= f.text_field :username , :style => "border: solid 1px #000; font-size: 200%; padding-left: 5px" , :size => "15" %>
+  	<%= submit_tag 'Go', :style => "border: solid 1px #000; font-size: 200%; padding-left: 5px" %>
+  <% end %>
+  <script>$("flickr_user_username").focus()</script>
+  <p style="font-size: 80%" id="coverFlowParagraphId">You can also click on a photo in the Cover Flow</p>
+</div>
+
+<script>
+	var imgs = []
+	<% @interesting_list.each do |photo| -%>
+		imgs[imgs.length] = {src: "<%= photo.image_link %>" , owner: "<%= photo.owner.id %>" };
+	<% end -%>
+	var curimg = 0;
+	
+	function open_user(imgnum) {
+	  $("coverFlowParagraphId").innerHTML = "Loading photosets from the requested user..."
+	  location.href = "<%= flickr_users_url %>/" + imgs[imgnum].owner;
+	}
+	
+	function show(obj) {
+	  var imgEl = new Element('img', {src: imgs[curimg].src, id: "coverFlowImageId" });
+	  var a = new Element('a', { onclick: "open_user(" + curimg + ")" , style: "cursor:pointer"})
+	  a.appendChild(imgEl);
+	  $('coverFlowId').update(a);
+	  cvi_reflex.add(document.getElementById("coverFlowImageId"), { tilt: "right", distance: 5, border: 10, transparency: 80,color: "#ffffff" });
+	  Effect.Appear($('coverFlowId'), {duration: 0.5});
+	  setTimeout(load_next_image,5000);	  
+	}
+	
+	function fade_and_show() {
+	  Effect.Fade($('coverFlowId'), { duration: 0.5, afterFinish: show});
+	}
+	
+	function load_next_image() {
+	  curimg = Math.floor(Math.random()*imgs.length);
+	  var img = new Image ;
+	  img.onload = fade_and_show
+	  img.src = imgs[curimg].src;
+	}
+	
+	Event.observe(window,'load',
+	  function() {
+	    load_next_image();
+	  });
+	
+</script>
