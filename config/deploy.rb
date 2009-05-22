@@ -20,7 +20,7 @@ set :application, "BaraDesignCompany"
 #set :deploy_to, "/home/#{user}/rails_apps/#{application}"
 set :www, "~/public_html" # NO, TRAILING SLASH, PLEASE
 # symbolic link directory. must have leading slash (i.e. if desired is ~/public_html/railsapp, then use /railsapp)
-set :sym_link_to_public, "/baradesigncompany" # NO, TRAILING SLASH, PLEASE
+set :symlink_to_public, "/baradesigncompany" # NO, TRAILING SLASH, PLEASE
 set :deploy_via, :remote_cache
 
 #############################################################
@@ -36,7 +36,9 @@ set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true
 set :use_sudo, false
-set :chmod755, %w(app config db lib public vendor script tmp)
+set :chmod644 %w()
+set :chmod666 %w()
+set :chmod755, %w(app config db lib public vendor script tmp public/javascripts public/stylesheets public/images)
 # By default, Capistrano makes the release group-writable. You don't want this with HostingRails
 set :group_writable, false
 
@@ -68,29 +70,7 @@ end
 
 before "deploy:setup", :db
 after "deploy:update_code", "db:symlink"
-after :deploy, 'deploy:cleanup'
-
-#	Passenger
-namespace :passenger do
-  desc "Restart Application"
-  task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
-
-namespace :deploy do
-  desc "Restarting mod_rails with restart.txt"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    passenger.restart
-  end
- 
-  [:start, :stop].each do |t|
-    desc "#{t} task is a no-op with mod_rails"
-    task t, :roles => :app do
-      passenger.restart
-    end
-  end
-end
+after :deploy, "deploy:cleanup"
 
 #	Database
 namespace :db do
@@ -127,4 +107,35 @@ namespace :db do
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
   end
+end
+
+#	Passenger
+namespace :passenger do
+  desc "Restart Application"
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    passenger.restart
+  end
+ 
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do
+      passenger.restart
+    end
+  end
+end
+
+desc "Sets permissions for directories and files on the server and set public symlink"
+task :after_deploy, :roles => [:app, :db, :web] do
+  run(chmod755.collect do |item|
+    "chmod 755 #{current_path}/#{item}"
+  end.join(" && "))
+  run "rm -f #{www}#{symlink_to_public}"
+  run "ln -fs #{www}#{symlink_to_public}"
 end
