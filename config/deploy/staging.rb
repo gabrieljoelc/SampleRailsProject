@@ -7,7 +7,7 @@ set :rails_env, "staging"
 namespace :public do
   task :symlink_stag do
     run "rm -f #{www}#{sym_link_to_public}"
-    run "ln -sf #{current_path}/public #{www}#{sym_link_to_public}"
+    run "ln -sf #{current_path}/public #{www}#{symlink_to_public}"
   end
 end
 
