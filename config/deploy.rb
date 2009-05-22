@@ -17,10 +17,6 @@ role :db, domain, :primary => true
 #############################################################
 
 set :application, "BaraDesignCompany"
-#set :deploy_to, "/home/#{user}/rails_apps/#{application}"
-set :www, "~/public_html" # NO, TRAILING SLASH, PLEASE
-# symbolic link directory. must have leading slash (i.e. if desired is ~/public_html/railsapp, then use /railsapp)
-set :symlink_to_public, "/baradesigncompany" # NO, TRAILING SLASH, PLEASE
 set :deploy_via, :remote_cache
 
 #############################################################
@@ -134,6 +130,4 @@ task :after_deploy, :roles => [:app, :db, :web] do
   run(chmod755.collect do |item|
     "chmod 755 #{current_path}/#{item}"
   end.join(" && "))
-  run "rm -f #{www}#{symlink_to_public}"
-  run "ln -fs #{www}#{symlink_to_public}"
 end
