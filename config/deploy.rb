@@ -36,8 +36,6 @@ set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true
 set :use_sudo, false
-set :chmod644 %w()
-set :chmod666 %w()
 set :chmod755, %w(app config db lib public vendor script tmp public/javascripts public/stylesheets public/images)
 # By default, Capistrano makes the release group-writable. You don't want this with HostingRails
 set :group_writable, false
