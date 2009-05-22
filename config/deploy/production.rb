@@ -5,7 +5,7 @@ set :symlink_to_public, "/baradesigncompany" # NO, TRAILING SLASH, PLEASE
 
 namespace :public do
   task :symlink_prod do
-    run "rm -f #{www}#{sym_link_to_public}"
+    run "rm -f #{www}#{symlink_to_public}"
     run "ln -sf #{current_path}/public #{www}#{symlink_to_public}"
   end
 end
