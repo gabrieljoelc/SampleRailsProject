@@ -1,12 +1,20 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def nav
+  def navUL(id="", cssClass="")
+    if id && id != ""
+      id = " id=\"" + id + "\" "
+    end
+    if cssClass && cssClass != ""
+      cssClass = " class=\"" + cssClass + "\" "
+    end
     s = ""
-    s << "<ul id=\"navbar\">"
+    s << "<ul#{id}#{cssClass}>"
     s << "<li>" + link_to_unless_current("Home", { :controller => "home",  :action => "index" }) + "</li>"
     s << "<li>" + link_to_unless_current("Photography", { :controller => "photosets", :action => "index" }) + "</li>"
     s << "</ul>"
     return s
+    #return link_to_unless_current("Home", { :controller => "home",  :action => "index" }).to_a +
+    #link_to_unless_current("Photography", { :controller => "photosets", :action => "index" }).to_a
   end
     
   def footer

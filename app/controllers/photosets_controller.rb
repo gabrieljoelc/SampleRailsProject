@@ -1,6 +1,5 @@
 class PhotosetsController < ApplicationController
   before_filter :load_user
-  layout 'photo_master'
   
   def load_user
     @flickr_user = FlickrUser.find_by_nsid(FLICKR_CONFIG[:user_id])

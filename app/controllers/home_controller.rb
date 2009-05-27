@@ -2,12 +2,15 @@ require 'flickr_helper'
 
 class HomeController < ApplicationController
   include FlickrAware
-  layout 'photo_master'
-  
+
   def index
     
   end
   
+  def show
+    render :action => params[:page]
+  end
+    
   def search
     d = FlickrAware.invoke("flickr.interestingness.getList")
     @interesting_list = []

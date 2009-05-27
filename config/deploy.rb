@@ -40,7 +40,8 @@ set :group_writable, false
 #	Subversion
 #############################################################
 
-set :repository,  "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/trunk"
+set :repository_subfolder, "branches/initial_appearance_work"
+set :repository,  "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/#{repository_subfolder}"
 set :scm_username, "gabriel"
 set :scm_password, "Love77==God"
 set :checkout, "export"

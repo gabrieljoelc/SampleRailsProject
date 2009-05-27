@@ -1,9 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resources :flickr_users
-  map.resources :flickr_users, :has_many => :photosets   
-  map.resources :photosets, :has_many => :photos
-  map.resources :posts
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -14,15 +11,20 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
+  
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
-
+  map.resources :flickr_users
+  map.resources :posts
+  
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+  map.resources :flickr_users, :has_many => :photosets   
+  map.resources :photosets, :has_many => :photos
   
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
@@ -38,7 +40,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   # map.root :controller => "welcome"
-  map.root :controller => "photosets"
+  map.root :controller => "home"
+
+  map.home ":page", :controller => "home", :action => "show", :page => /about|contact|faq/
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,18 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "photos", :cache => true %>
+<% end -%>
+
+<ul>
+<li><%= link_to_unless_current("Home",  root_path) %></li>
+<li><%= link_to_unless_current("Photography", photosets_path()) %></li>
+<li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
+<li><%= link_to_unless_current("About", home_path("about")) %></li>
+<li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
+</ul>
+
+<% content_for :content do %>
+  <h1>Photos Layout</h1>
+  <%= yield :photos_content %>
+<% end -%>
+
+<%= render :file => 'layouts/application' %> 

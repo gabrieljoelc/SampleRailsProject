@@ -1,12 +1,10 @@
 class PhotosController < ApplicationController
-  layout 'photo_master'
   
   # GET /photos
   # GET /photos.xml
   def index
     @photos = Photo.by_set(params[:photoset_id])
-    @photoset = Photoset.new
-    @photoset.id = params[:photoset_id]
+    @photoset = Photoset.find(params[:photoset_id])
 
     respond_to do |format|
       format.html # index.html.erb

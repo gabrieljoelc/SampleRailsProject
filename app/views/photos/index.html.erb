@@ -1,35 +1,8 @@
-<!--<span style="font-size: 300%; margin-bottom: 0; padding-bottom: 0;">
-<% #= @photos[0].owner %>
-</span><br />-->
-<p>the photos you chose...</p>
-<span style="font-size: 80%">only first 30 are shown. Click on them to trigger a slideshow. Hover on them for captions</span>
+<% content_for :photos_content do %>
 
+<%= link_to "Back to Photograpy main", photosets_path() %>
 
-<p>
-<%= link_to 'Back to Photosets' , photosets_path() %>
-</p>
+<h2><%= @photoset.title.to_s.capitalize %></h2>
+<%= photo_list(@photos, @photoset) %>
 
-
-<% for photo in @photos %>
-	<a href="<%= photoset_photo_url(@photoset,photo) %>" rel="lightbox[<%= @photoset.id %>]" onmouseover="caption(this)" >
-	<img src="<%= photo.thumb_link %>" alt="<%=h photo.title %>" title="<%=h photo.title %>" class="instant"></a>
-<% end %>
-
-<script>
-  function caption(element) {
-    var caption = element.down().title;
-    if (caption && caption.length > 0) {
-      $('captionId').innerHTML = caption;
-      $('captionDivId').show();
-    } else {
-      $('captionDivId').hide();
-    }
-  }
-</script>
-  
-<div id="captionDivId" style="display:none" >
-  <p style="margin-top: 30pt; padding:0; margin-bottom: -10pt; font-size: 800%; color: #333; ">&laquo;</p>
-  <p style="padding-left: 15pt; margin-bottom: 50px; font-size: 120%; width: 80%; line-height: double; z-index: 10" id="captionId">
-    Caption here
-  </p>
-</div>
+<% end -%>

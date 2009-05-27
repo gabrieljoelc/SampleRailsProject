@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+<title>baraDesignCompany.com | <%= controller.controller_name.capitalize %> | <%= controller.action_name.capitalize %><% if params[:page] then %> | <%= params[:page].capitalize %> <%- end %></title>
+
+<%= stylesheet_link_tag "undohtml", "default", :cache => true %>
+<%= yield :stylesheets %>
+<%= javascript_include_tag "jquery-1.3.2.min", "jq_plugins/supersleight.plugin", :cache => true %>
+<%= yield :javascript %>
+<%= render :partial => "shared/ie_cond_comments" %>
+<%= yield :head_end %>
+
+</head>
+<body>
+
+<div id="header">
+<%= yield :header %>
+</div>
+
+<div id="content">
+
+  <h1 id="flashHeading"><%= flash[:notice] %></h1>
+  
+  <%= yield :content  %>
+
+</div>
+
+<div id="footer">
+<%= yield :footer %>
+</div>
+
+</body>
+</html>
