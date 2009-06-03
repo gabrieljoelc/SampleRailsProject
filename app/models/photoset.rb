@@ -1,6 +1,6 @@
 require 'net/http'
 require 'rexml/document'
-require 'flickr_helper'
+require 'helpers/flickr_helper'
 
 class Photoset
   include FlickrAware

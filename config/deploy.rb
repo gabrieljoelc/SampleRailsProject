@@ -17,7 +17,8 @@ role :db, domain, :primary => true
 #############################################################
 
 set :application, "BaraDesignCompany"
-set :deploy_via, :remote_cache
+set :deploy_via, :checkout
+#set :deploy_via, :remote_cache
 
 #############################################################
 #	Database
@@ -35,15 +36,18 @@ set :use_sudo, false
 set :chmod755, %w(app config db lib public vendor script tmp public/javascripts public/stylesheets public/images)
 # By default, Capistrano makes the release group-writable. You don't want this with HostingRails
 set :group_writable, false
+# default behavior is to flush page cache on deploy
+set :flush_cache, true
 
 #############################################################
 #	Subversion
 #############################################################
 
-set :repository_subfolder, "branches/initial_appearance_work"
-set :repository,  "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/#{repository_subfolder}"
-set :scm_username, "gabriel"
-set :scm_password, "Love77==God"
+if variables.include?(:branch)
+  set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/branches/#{branch}"
+else
+  set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/trunk"
+end
 set :checkout, "export"
 
 #############################################################
@@ -64,8 +68,12 @@ end
 #############################################################
 
 before "deploy:setup", :db
+after "deploy:setup", "caching:create_page_cache"
+after "deploy:setup", "caching:mk_asset_dirs"
 after "deploy:update_code", "db:symlink"
 after :deploy, "deploy:cleanup"
+before "deploy:restart", "caching:rm_and_mk_asset_dirs"
+before "deploy:restart", "caching:symlink_shared_dirs"
 
 #	Database
 namespace :db do
@@ -101,6 +109,55 @@ namespace :db do
   desc "Make symlink for database yaml" 
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+end
+
+# page cache management
+task :keep_page_cache do
+  set :flush_cache, false
+end
+
+namespace :caching do
+  desc "Remove (if flush_cache true) asset cache directories"
+  task :rm_asset_dirs do
+    if flush_cache
+      run "rm -rf #{current_path}/public/javascripts/cache"
+      run "rm -rf #{current_path}/public/stylesheets/cache"
+    end
+  end
+  
+  desc "Create asset cache directories"
+  task :mk_asset_dirs do
+    run "mkdir #{current_path}/public/javascripts/cache"
+    run "mkdir #{current_path}/public/stylesheets/cache"
+  end
+  
+  desc "Create page cache directory in shared directory"
+  task :create_page_cache, :roles => :app do
+    run "umask 02 && mkdir -p #{shared_path}/cache"
+  end
+  
+  desc "Remove (if flush_cache true) and then create asset cache directories"
+  task :rm_and_mk_asset_dirs do
+    rm_asset_dirs
+    mk_asset_dirs
+  end
+  
+  desc "Remove (if flush_cache true) contents of page cache directory"
+  task :flush_page_cache, :roles => :app do
+    if flush_cache
+      run <<-CMD
+        rm -rf #{shared_path}/cache/*
+      CMD
+    end
+  end
+  
+  desc "Create symlink from shared cache directory to public cache symbolic directory"
+  task :symlink_shared_dirs, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
+    run <<-CMD
+      cd #{current_path} &&
+      ln -nfs #{shared_path}/cache #{release_path}/public/cache
+    CMD
   end
 end
 

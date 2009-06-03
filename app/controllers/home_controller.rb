@@ -1,8 +1,7 @@
-require 'flickr_helper'
+require "helpers/flickr_helper"
 
 class HomeController < ApplicationController
   include FlickrAware
-
   def index
     
   end

@@ -3,14 +3,15 @@
 .left {clear:left;}
 .right {clear:right;}
 
-body {font:62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; color:#000;}
+/*body {font:62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; color:#000;}*/
+body {font:80%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; color:#000;}
 h1 {font-size:2.2em;}
 h2 {font-size:2em;}
 h3 {font-size:1.8em;}
 h4 {font-size:1.6em;}
 h5 {font-size:1.4em;}
-p {font-size:1.2em;}
-a {font-size:1.2em;}
+p {}
+a {}
 a:visited {}
 a:hover {}
 ol {}

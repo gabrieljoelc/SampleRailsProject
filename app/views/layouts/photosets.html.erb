@@ -1,14 +1,6 @@
 <% content_for :stylesheets do %>
-  <%= stylesheet_link_tag "photosets", :cache => true %>
+  <%= stylesheet_cache_link_tag "photosets", :cached_name => "photosets_styles" %>
 <% end -%>
-
-<ul>
-<li><%= link_to_unless_current("Home",  root_path) %></li>
-<li><%= link_to_unless_current("Photography", photosets_path()) %></li>
-<li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
-<li><%= link_to_unless_current("About", home_path("about")) %></li>
-<li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
-</ul>
 
 <% content_for :content do %>
   <h1>Photosets Layout</h1>

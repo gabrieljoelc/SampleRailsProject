@@ -2,15 +2,11 @@ module PhotosHelper
   def photo_list(photos, photoset, ulId="", ulClass="", liClass="", aClass="", imgClass="", emptyId="", emptyClass="")
     s = ""
     if !photos || photos.empty?
-      s << MarkupHelper.create_begin_tag("p", {"id"=>emptyId, "class"=>emptyClass}) + "Uh, oh. No photosets found ...</p>"
+      s << content_tag(:p, "Uh, oh. No photos found ...</p>", {"id"=>emptyId, "class"=>emptyClass})
     else
-      s << MarkupHelper.create_begin_tag("ul", {"id"=>ulId, "class"=>ulClass})
+      s << tag("ul", {"id"=>ulId, "class"=>ulClass}, true)
       for photo in photos
-        s << MarkupHelper.create_begin_tag("li", {"class"=>liClass})
-        s << MarkupHelper.create_begin_tag("a", {"href"=>photoset_photo_url(photoset,photo), "class"=>aClass})
-        img = image_tag photo.thumb_link, :alt=>photo.title, :class=>imgClass
-        s << img
-        s << "</a></li>"
+        s << content_tag(:li, link_to(image_tag(photo.thumb_link, :alt=>photo.title, :class=>imgClass, :id=>"photo_"+photo.id), photoset_photo_path(photoset,photo), :class=>aClass + " get"), :class=>liClass)
       end
       s << "</ul>"
     end

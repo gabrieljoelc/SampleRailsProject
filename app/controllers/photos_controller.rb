@@ -16,9 +16,14 @@ class PhotosController < ApplicationController
   # GET /photos/1.xml
   def show
     @photo = Photo.find(params[:id])
-
+=begin
     respond_to do |format|
       format.jpg
+    end
+=end
+    respond_to do |format|
+      format.html
+      format.js {render :layout => false}
     end
   end
 

@@ -1,5 +1,4 @@
 class FlickrUsersController < ApplicationController
-  layout 'photo_master'
   
   # GET /flickr_users/1  
   def show

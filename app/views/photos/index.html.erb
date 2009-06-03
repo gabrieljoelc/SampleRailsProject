@@ -3,6 +3,6 @@
 <%= link_to "Back to Photograpy main", photosets_path() %>
 
 <h2><%= @photoset.title.to_s.capitalize %></h2>
-<%= photo_list(@photos, @photoset) %>
-
+<%= photo_list(@photos, @photoset, "photoList") %>
+<div id="photo"></div>
 <% end -%>

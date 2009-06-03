@@ -2,10 +2,10 @@
 
 one:
   id: 1
-  title: MyString
-  body: MyText
+  title: "doody 1"
+  body: "this is the first time i have doodied"
 
 two:
-  id: 1
-  title: MyString
-  body: MyText
+  id: 2
+  title: "DOODY 2"
+  body: "this is the second time i have doodied"

@@ -1,14 +1,10 @@
 <% content_for :stylesheets do %>
-  <%= stylesheet_link_tag "photos", :cache => true %>
+  <%= stylesheet_cache_link_tag "photos", :cached_name => "photos_styles" %>
 <% end -%>
 
-<ul>
-<li><%= link_to_unless_current("Home",  root_path) %></li>
-<li><%= link_to_unless_current("Photography", photosets_path()) %></li>
-<li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
-<li><%= link_to_unless_current("About", home_path("about")) %></li>
-<li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
-</ul>
+<% content_for :javascripts do %>
+  <%= javascript_cache_include_tag "photos" %>
+<% end -%>
 
 <% content_for :content do %>
   <h1>Photos Layout</h1>

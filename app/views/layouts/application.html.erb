@@ -6,10 +6,10 @@
 
 <title>baraDesignCompany.com | <%= controller.controller_name.capitalize %> | <%= controller.action_name.capitalize %><% if params[:page] then %> | <%= params[:page].capitalize %> <%- end %></title>
 
-<%= stylesheet_link_tag "undohtml", "default", :cache => true %>
+<%= stylesheet_cache_link_tag "undohtml", "default", :cached_name => "defaults" %>
 <%= yield :stylesheets %>
-<%= javascript_include_tag "jquery-1.3.2.min", "jq_plugins/supersleight.plugin", :cache => true %>
-<%= yield :javascript %>
+<%= javascript_cache_include_tag "jquery-1.3.2.min", "jq_plugins/supersleight.plugin", "application", :cached_name => "defaults" %>
+<%= yield :javascripts %>
 <%= render :partial => "shared/ie_cond_comments" %>
 <%= yield :head_end %>
 
@@ -19,7 +19,13 @@
 <div id="header">
 <%= yield :header %>
 </div>
-
+<ul>
+  <li><%= link_to_unless_current("Home",  root_path) %></li>
+  <li><%= link_to_unless_current("Photography", photosets_path()) %></li>
+  <li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
+  <li><%= link_to_unless_current("About", home_path("about")) %></li>
+  <li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
+</ul>
 <div id="content">
 
   <h1 id="flashHeading"><%= flash[:notice] %></h1>

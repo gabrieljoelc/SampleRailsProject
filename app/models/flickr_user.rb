@@ -1,10 +1,10 @@
 require 'net/http'
 require 'rexml/document'
-require 'flickr_helper'
+require 'helpers/flickr_helper'
 
 class FlickrUser
   include FlickrAware
-  
+
   attr_accessor :id, :username, :photosets
   
   def FlickrUser.find_by_nsid(nsid)
