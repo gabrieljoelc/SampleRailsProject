@@ -1,9 +1,8 @@
 <% content_for :stylesheets do %>
-  <% #= stylesheet_cache_link_tag "home", :cached_name => "home_styles" %>
+  <%= stylesheet_cache_link_tag "home", :cached_name => "home_styles" %>
 <% end -%>
 
 <% content_for :content do %>
-  <h1>Home Layout</h1>
   <%= yield :home_content %>
 <% end -%>
 

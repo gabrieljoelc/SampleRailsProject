@@ -2,6 +2,9 @@
 .clear {clear:both;}
 .left {clear:left;}
 .right {clear:right;}
+.gray {background:#312829; color:#FFF;}
+.gray a {color:#FFF;}
+.gray a:hover {color:#00FF7F;}
 
 /*body {font:62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; color:#000;}*/
 body {font:80%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; color:#000;}
@@ -21,4 +24,21 @@ form {}
 fieldset {}
 legend {}
 
-div {}
+body {
+	/**/background:url(/images/splatter.png) no-repeat;
+	min-width:870px;
+}
+
+#header {
+	padding:15px 15px 0 0;
+}
+
+#header #logo {
+	float:right;
+	position:relative;
+	margin-bottom:-48px;
+}
+
+#main_nav a:hover, #main_nav li {
+	color:#00FF7F;
+}

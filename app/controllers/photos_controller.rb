@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  layout "photosets"
   
   # GET /photos
   # GET /photos.xml

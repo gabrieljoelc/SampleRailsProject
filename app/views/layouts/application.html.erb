@@ -15,26 +15,19 @@
 
 </head>
 <body>
-
-<div id="header">
-<%= yield :header %>
+<div id="header" class="clearfix">
+  <%= link_to(image_tag("logo_full.png", :id=>"logo", :alt=>"BARA Design Co."), root_path()) %>
 </div>
-<ul>
-  <li><%= link_to_unless_current("Home",  root_path) %></li>
-  <li><%= link_to_unless_current("Photography", photosets_path()) %></li>
-  <li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
-  <li><%= link_to_unless_current("About", home_path("about")) %></li>
-  <li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
-</ul>
-<div id="content">
+<%= render :partial=>"shared/main_nav" %>
+<div id="content" class="clearfix">
 
   <h1 id="flashHeading"><%= flash[:notice] %></h1>
   
-  <%= yield :content  %>
+  <%= yield :content or yield  %>
 
 </div>
 
-<div id="footer">
+<div id="footer" class="clearfix">
 <%= yield :footer %>
 </div>
 

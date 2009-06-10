@@ -3,8 +3,13 @@
 <% end -%>
 
 <% content_for :content do %>
-  <h1>Photosets Layout</h1>
-  <%= yield :photosets_content %>
+  <div id="photosets_bg" class="gray clearfix"></div>
+  <div id="photosets_sidebar">
+    <%= yield :photosets_sidebar %>
+  </div>
+  <div id="photosets_content" class="clearfix">
+    <%= yield :photosets_content %>
+  </div>
 <% end -%>
 
 <%= render :file => 'layouts/application' %> 
