@@ -1,0 +1,42 @@
+:family:
+  :id: "72157617395261080"
+  :server: "3203"
+  :secret: "34194ee562"
+  :farm: "4"
+  :title: "family"
+  :description: nil
+  :primary: "3145626806"
+  :photos_num: "17"
+  :page:
+  :per_page:
+  :pages:
+  :photos:
+
+:engagement:
+  :id: "72157617304532147"
+  :server: "3210"
+  :secret: "b669e0454e"
+  :farm: "4"
+  :title: "engagement"
+  :description: nil
+  :primary: "3144768857"
+  :photos_num: "97"
+  :page:
+  :per_page:
+  :pages:
+  :photos:
+
+:weddings:
+  :id: "72157617304522941"
+  :server: "3249"
+  :secret: "bb0214ffc4"
+  :farm: "4"
+  :title: "weddings"
+  :description: nil
+  :primary: "3145605410"
+  :photos_num: "51"
+  :page:
+  :per_page:
+  :pages:
+  :photos:
+  

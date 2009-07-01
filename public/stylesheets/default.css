@@ -25,7 +25,7 @@ fieldset {}
 legend {}
 
 body {
-	/**/background:url(/images/splatter.png) no-repeat;
+	background:url(/images/splatter.png) no-repeat;
 	min-width:870px;
 }
 

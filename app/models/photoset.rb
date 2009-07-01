@@ -7,6 +7,13 @@ class Photoset
   
   attr_accessor :id, :photos_num, :title, :description
   attr_accessor :primary, :farm, :server, :secret # required to create the thumbnails id
+  attr_accessor :page, :per_page, :pages, :photos
+  
+  def initialize(params = {})
+    @id, @photos_num, @title, @description= params[:id], params[:photos_num], params[:title], params[:description]
+    @primary, @farm, @server, @secret= params[:primary], params[:farm], params[:server], params[:secret]
+    @page, @per_page, @pages, @photos = params[:page], params[:per_page], params[:pages], params[:photos]
+  end
   
   def Photoset.find(photoset_id)
     d = FlickrAware.invoke("flickr.photosets.getInfo", :photoset_id => photoset_id)
@@ -43,7 +50,7 @@ class Photoset
     
     titles = photoset_element.get_elements("title")
     if titles && titles.length > 0
-      p.title = titles[0].get_text
+      p.title = titles[0].get_text.to_s
     end
     
     descriptions = photoset_element.get_elements("description")

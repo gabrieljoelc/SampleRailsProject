@@ -1,12 +1,9 @@
 <% content_for :photosets_sidebar do %>
 
-<%= link_to "Back to Photograpy main", photosets_path() %>
-
-<h4><%= @photoset.title.to_s.capitalize %></h4>
-<%= photo_list(@photos, @photoset, "photo_list") %>
+<%= render :partial => "photo_list" %>
 
 <% end -%>
 
 <% content_for :photosets_content do %>
-<div id="photo"></div>
+<div id="photo"><%= render :partial=>"photo" %></div>
 <% end -%>

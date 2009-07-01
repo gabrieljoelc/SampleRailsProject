@@ -1,10 +1,8 @@
 <!--[if IE]>
-<style type="text/css">
-  .clearfix {
-    zoom: 1;     /* triggers hasLayout */
-    display: block;     /* resets display for IE/Win */
-    }  /* Only IE can see inside the conditional comment
-    and read this CSS rule. Don't ever use a normal HTML
-    comment inside the CC or it will close prematurely. */
-</style>
+<%= stylesheet_cache_link_tag "ie", :cached_name => "ie_defaults" %>
+<![endif]-->
+
+<!--[if lte IE 6]>
+<%= stylesheet_cache_link_tag "ie6", :cached_name => "ie6_defaults" %>
+<%= javascript_cache_include_tag "jq_plugins/supersleight.plugin", "ie6", :cached_name => "ie6_defaults" %>
 <![endif]-->

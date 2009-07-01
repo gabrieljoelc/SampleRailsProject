@@ -17,6 +17,10 @@
 	margin:0 10px;
 }
 
+#content {
+	clear:both;
+}
+
 #photosets_bg {
 	height:100%;
 	left:50px;
@@ -67,7 +71,11 @@
 	background:#00FF7F;
 }
 
+#photo_list_nav a {
+	margin-right:10px;
+}
+
 #photosets_content {
-	float:right;
-	margin:50px 10% 0 0;
+	float:left;
+	margin:50px 0 0 18%;
 }

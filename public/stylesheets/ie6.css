@@ -1,0 +1,7 @@
+html, body {height:100%;}
+body {background-position:3px 0;}
+#home #main_nav {margin-right:-3px;}
+#photosets #content, #photos #content {z-index:1; position:relative; height:100%;}
+#photosets #main_nav, #photos #main_nav {margin-right:37px;}
+#photosets #photosets_bg, #photos #photosets_bg {top:-127px; height:100%;}
+#photosets #photosets_sidebar, #photos #photosets_sidebar {margin-left:25px;}

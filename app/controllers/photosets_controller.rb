@@ -8,8 +8,12 @@ class PhotosetsController < ApplicationController
   # GET /photosets
   # GET /photosets.xml
   def index
+    
+    session[:flickr_page] = nil
+    session[:flickr_per_page] = nil
+    session[:flickr_page_total] = nil
+    
     @photosets = Photoset.by_user(@flickr_user)[0..50]
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @photosets }
@@ -20,7 +24,6 @@ class PhotosetsController < ApplicationController
   # GET /photosets/1.xml
   def show
     @photoset = Photoset.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @photoset }

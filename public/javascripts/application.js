@@ -35,16 +35,6 @@ jQuery.fn.submitWithAjax = function() {
   return this;
 };
 
-//Send data via get if <acronym title="JavaScript">JS</acronym> enabled
-jQuery.fn.getWithAjax = function() {
-  this.unbind('click', false);
-  this.click(function() {
-    $.get($(this).attr("href"), $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
-};
-
 //Send data via Post if <acronym title="JavaScript">JS</acronym> enabled
 jQuery.fn.postWithAjax = function() {
   this.unbind('click', false);
@@ -74,10 +64,26 @@ jQuery.fn.deleteWithAjax = function() {
   return this;
 };
 
+//Send data via get if <acronym title="JavaScript">JS</acronym> enabled
+jQuery.fn.getWithAjax = function() {
+  //this.unbind('click', false);
+  this.die('click');
+  //this.click(function() {
+  this.live('click', function() {
+    $.get($(this).attr("href"), $(this).serialize(), null, "script");
+    return false;
+  })
+  return this;
+};
+
 //This will "ajaxify" the links
 function ajaxLinks(){
     $('.ajaxForm').submitWithAjax();
     $('a.get').getWithAjax();
+    /*$('a.get').live('click', function() {
+      $.get($(this).attr("href"), $(this).serialize(), null, "script");
+      return false;
+    });*/
     $('a.post').postWithAjax();
     $('a.put').putWithAjax();
     $('a.delete').deleteWithAjax();
@@ -96,5 +102,5 @@ $(document).ready(function() {
        settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
      });
 
-  ajaxLinks();
+  ajaxLinks();  
 });

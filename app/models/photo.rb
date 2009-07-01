@@ -7,6 +7,11 @@ class Photo
   
   attr_accessor :id,:server,:title,:secret, :farm, :owner
   
+  def initialize(params = {})
+    @id, @server, @title, @secret = params[:id], params[:server], params[:title], params[:secret]
+    @farm, @owner = params[:farm], params[:owner]
+  end
+  
   def image_data
     raise "Unsufficient params to load the image" unless server && farm && id && secret  
     puts "Grabbing #{image_link}"
@@ -45,9 +50,9 @@ class Photo
     return p
   end
   
-  def Photo.by_set(photoset_id)
+  def Photo.by_set(photoset_id, per_page = 5, page = 1)
     # extract only the first 30 photos
-    d = FlickrAware.invoke("flickr.photosets.getPhotos", :photoset_id => photoset_id, :per_page => "30")
+    d = FlickrAware.invoke("flickr.photosets.getPhotos", :photoset_id => photoset_id, :per_page => per_page, :page => page)
     if d
       photos = []
       photoset = d.root.get_elements("//photoset")[0]
@@ -58,6 +63,26 @@ class Photo
         photos << p
       end
       return photos
+    end
+    return nil    
+  end
+  
+  def Photo.by_photoset(photoset, per_page = 5, page = 1)
+    # extract only the first 30 photos
+    d = FlickrAware.invoke("flickr.photosets.getPhotos", :photoset_id => photoset.id, :per_page => per_page, :page => page)
+    if d
+      photoset.photos = []
+      photoset_attr = d.root.get_elements("//photoset")[0]
+      photoset.page = photoset_attr.attributes["page"].to_i
+      photoset.per_page = photoset_attr.attributes["perpage"].to_i
+      photoset.pages = photoset_attr.attributes["pages"].to_i
+      owner = FlickrUser.new(:username => photoset_attr.attributes["ownername"], :id => photoset_attr.attributes["owner"])
+      d.root.get_elements("//photo").each do |photo|
+        p = Photo.from_xml(photo)
+        p.owner = owner
+        photoset.photos << p
+      end
+      return photoset.photos
     end
     return nil    
   end

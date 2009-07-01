@@ -8,13 +8,13 @@
 
 <%= stylesheet_cache_link_tag "undohtml", "default", :cached_name => "defaults" %>
 <%= yield :stylesheets %>
-<%= javascript_cache_include_tag "jquery-1.3.2.min", "jq_plugins/supersleight.plugin", "application", :cached_name => "defaults" %>
+<%= javascript_cache_include_tag "jquery-1.3.2.min", "application", :cached_name => "defaults" %>
 <%= yield :javascripts %>
 <%= render :partial => "shared/ie_cond_comments" %>
 <%= yield :head_end %>
 
 </head>
-<body>
+<body id="<%= controller.controller_name %>">
 <div id="header" class="clearfix">
   <%= link_to(image_tag("logo_full.png", :id=>"logo", :alt=>"BARA Design Co."), root_path()) %>
 </div>

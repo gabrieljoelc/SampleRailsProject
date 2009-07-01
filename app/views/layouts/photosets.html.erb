@@ -2,6 +2,10 @@
   <%= stylesheet_cache_link_tag "photosets", :cached_name => "photosets_styles" %>
 <% end -%>
 
+<% content_for :javascripts do %>
+  <%= javascript_cache_include_tag "jq_plugins/jquery.livequery", "photos", :cached_name => "photos_default" %>
+<% end -%>
+
 <% content_for :content do %>
   <div id="photosets_bg" class="gray clearfix"></div>
   <div id="photosets_sidebar">

@@ -3,12 +3,13 @@ jQuery.fn.supersleight = function(settings) {
 		imgs: true,
 		backgrounds: true,
 		shim: 'x.gif',
-		apply_positioning: true
+		//apply_positioning: true
+    applyPositioning: true
 	}, settings);
 	
 	return this.each(function(){
 		if (jQuery.browser.msie && parseInt(jQuery.browser.version) < 7 && parseInt(jQuery.browser.version) > 4) {
-			jQuery(this).find('*').each(function(i,obj) {
+			jQuery(this).find('*').andSelf().each(function(i,obj) {
 				var self = jQuery(obj);
 				// background pngs
 				if (settings.backgrounds && self.css('background-image').match(/\.png/i) !== null) {
@@ -22,7 +23,8 @@ jQuery.fn.supersleight = function(settings) {
 					self.css(styles);
 				};
 				// image elements
-				if (settings.imgs && self.is('img[src$=png]')){
+        //if (settings.imgs && self.is('img[src$=png]')){
+				if (settings.imgs && self.is('img[src*=.png]')){
 					var styles = {
 						'width': self.width() + 'px',
 						'height': self.height() + 'px',
@@ -31,7 +33,8 @@ jQuery.fn.supersleight = function(settings) {
 					self.css(styles).attr('src', settings.shim);
 				};
 				// apply position to 'active' elements
-				if (settings.applyPositioning && self.is('a, input') && self.css('position') === ''){
+				//if (settings.applyPositioning && self.is('a, input') && self.css('position') === ''){
+        if (settings.applyPositioning && self.is('a, input') && (self.css('position') === '' || self.css('position') === 'static')){
 					self.css('position', 'relative');
 				};
 			});
