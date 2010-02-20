@@ -1,3 +1,11 @@
+<% content_for :home_stylesheets do %>
+	<%= stylesheet_cache_link_tag "slideshow", :cached_name => "slideshow_styles" %>
+<% end -%>
+
+<% content_for :home_javascripts do %>
+	<%= javascript_cache_include_tag "jq_plugins/jquery.cycle.all.min", "slideshow", :cached_name => "slideshow_scripts" %>
+<% end -%>
+
 <% content_for :home_content do %>
-<h2>Welcome to baradesigncompany.com</h2>
+<%= render :partial => "shared/flickr_slideshow" %>
 <% end -%>

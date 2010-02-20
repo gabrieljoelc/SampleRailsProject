@@ -8,7 +8,7 @@
 
 <%= stylesheet_cache_link_tag "undohtml", "default", :cached_name => "defaults" %>
 <%= yield :stylesheets %>
-<%= javascript_cache_include_tag "jquery-1.3.2.min", "application", :cached_name => "defaults" %>
+<%= javascript_cache_include_tag "jquery-1.4.2.min", "application", :cached_name => "defaults" %>
 <%= yield :javascripts %>
 <%= render :partial => "shared/ie_cond_comments" %>
 <%= yield :head_end %>

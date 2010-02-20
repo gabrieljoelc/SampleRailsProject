@@ -1,0 +1,5 @@
+<div id="slideshow">
+<% for photo in @photos %>
+	<div><%= image_tag(photo.image_link, :alt=>photo.title, :id=>"photo_"+photo.id) %></div>
+<% end -%>
+</div>

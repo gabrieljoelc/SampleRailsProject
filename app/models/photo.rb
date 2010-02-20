@@ -39,6 +39,25 @@ class Photo
     return nil
   end
   
+  # gets photos by a single tag
+  def Photo.search_by_tag(tag, user_id = nil)
+	tags = tag.split(/,/);
+	if (tags.length > 0)
+		tag = tags[0].strip()
+		d = FlickrAware.invoke("flickr.photos.search", :tags => tag, :user_id => user_id)
+		if d
+		  photos = []
+		  d.root.get_elements("//photo").each do |photo|
+			p = Photo.from_xml(photo)
+			#p.owner = owner
+			photos << p
+		  end
+		  return photos
+		end
+	end
+    return nil
+  end
+  
   def Photo.from_xml(photo_el)
     p = Photo.new
     p.id = photo_el.attributes["id"]

@@ -1,5 +1,9 @@
 <% content_for :stylesheets do %>
   <%= stylesheet_cache_link_tag "home", :cached_name => "home_styles" %>
+  <%= yield :home_stylesheets %>
+<% end -%>
+<% content_for :javascripts do %>
+  <%= yield :home_javascripts %>
 <% end -%>
 
 <% content_for :content do %>

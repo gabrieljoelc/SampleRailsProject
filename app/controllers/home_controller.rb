@@ -2,8 +2,9 @@ require "helpers/flickr_helper"
 
 class HomeController < ApplicationController
   include FlickrAware
+  
   def index
-    
+    @photos = Photo.search_by_tag('featured', FLICKR_CONFIG[:user_id])
   end
   
   def show

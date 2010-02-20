@@ -1,0 +1,21 @@
+/* give slideshow some style */
+#slideshow {
+	position:relative;
+	margin:0 auto;
+	width:300px;
+	height:300px;
+}
+
+/* give each slide the same dimensions */
+#slideshow div {
+	width:300px;
+	height:300px;
+	display:none;
+}
+
+/* make sure each slide image is centered */
+#slideshow div img {
+	margin:auto;
+	display:block;
+	height:315px;
+}
