@@ -16,6 +16,31 @@ module ApplicationHelper
     #return link_to_unless_current("Home", { :controller => "home",  :action => "index" }).to_a +
     #link_to_unless_current("Photography", { :controller => "photosets", :action => "index" }).to_a
   end
+  
+  def url_for_unless_current(name, options = {})
+	anchorTag = link_to_unless_current(name, options)
+	if anchorTag == name
+		return nil
+	else
+		return anchorTag.slice(anchorTag.index("\"")+1..anchorTag.rindex("\"")-1)
+	end
+  end
+  
+  def link_to_unless_current_with_inline_html(name, options = {}, tag_name = "span")#, active_class="active")
+	url = url_for_unless_current(name, options)
+	first = ""
+	second = ""
+	if url != nil
+		first << "<a href=\"#{url}\">"
+		second << "</a>"
+	#elsif url == nil && active_class != ""
+	#	active_class = " class=\"#{active_class}\""
+	end
+	
+	first << "<#{tag_name}>#{name}</#{tag_name}>"
+	
+	return first + second
+  end
     
   def footer
     s = ""

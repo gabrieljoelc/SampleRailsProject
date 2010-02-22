@@ -14,9 +14,9 @@ h3 {font-size:1.8em;}
 h4 {font-size:1.6em;}
 h5 {font-size:1.4em;}
 p {}
-a {}
-a:visited {}
-a:hover {}
+a {color:#fff;}
+a:visited {color:#fff;}
+a:hover {color:#00FF7F;}
 ol {}
 ul {}
 li {}
@@ -33,10 +33,27 @@ body {
 	padding:15px 15px 0 0;
 }
 
+/*
 #header #logo {
 	float:right;
 	position:relative;
 	margin-bottom:-48px;
+}
+*/
+
+#header {
+	background-image:url(/images/logo_full.png);
+	background-repeat:no-repeat;
+	background-position:97.5% bottom;
+	height:135px;
+}
+
+#homeLogoLink {
+	height:93px;
+	position:absolute;
+	right:15px;
+	top:15px;
+	width:416px;
 }
 
 #main_nav a:hover, #main_nav li {

@@ -1,11 +1,22 @@
-#header #logo {
-	z-index:-1;
+#header {
+	background-image:url(/images/logo_full.png);
+	background-repeat:no-repeat;
+	background-position:97.5% bottom;
+	height:135px;
+}
+
+#homeLogoLink {
+	height:93px;
+	position:absolute;
+	right:15px;
+	top:15px;
+	width:416px;
 }
 
 #main_nav {
 	float:right;
-	margin-right:82px;
-	margin-top:10px;
+	margin-right:143px;
+	margin-top:-30px;
 }
 
 #main_nav a {

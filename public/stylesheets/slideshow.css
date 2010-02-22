@@ -3,13 +3,13 @@
 	position:relative;
 	margin:0 auto;
 	width:300px;
-	height:300px;
+	height:290px;
 }
 
 /* give each slide the same dimensions */
 #slideshow div {
 	width:300px;
-	height:300px;
+	height:290px;
 	display:none;
 }
 
@@ -17,5 +17,5 @@
 #slideshow div img {
 	margin:auto;
 	display:block;
-	height:315px;
+	height:290px;
 }

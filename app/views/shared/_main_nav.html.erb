@@ -1,7 +1,7 @@
 <ul id="main_nav" class="clearfix">
-  <li><%= link_to_unless_current("Home",  root_path) %></li>
-  <li><%= link_to_unless_current("Photography", photosets_path()) %></li>
-  <li><%= link_to_unless_current("Contact", home_path("contact")) %></li>
-  <li><%= link_to_unless_current("About", home_path("about")) %></li>
-  <li><%= link_to_unless_current("FAQ", home_path("faq")) %></li>
+  <!--<li id="home">--><% # = link_to_unless_current("Home",  root_path) %><!--</li>-->
+  <li id="about"<%= url_for_unless_current("About", home_path("about")) == nil ? " class=\"active\"" : ""%>><%= link_to_unless_current_with_inline_html("About", home_path("about"), "span") %></li>
+  <li id="photography"<%= url_for_unless_current("Photography", photosets_path()) == nil ? " class=\"active\"" : ""%>><%= link_to_unless_current_with_inline_html("Photography", photosets_path(), "span") %></li>
+  <li id="contact"<%= url_for_unless_current("Contact", home_path("contact")) == nil ? " class=\"active\"" : ""%>><%= link_to_unless_current_with_inline_html("Contact", home_path("contact"), "span") %></li>
+  <li id="faq"<%= url_for_unless_current("FAQ", home_path("faq")) == nil ? " class=\"active\"" : ""%>><%= link_to_unless_current_with_inline_html("FAQ", home_path("faq"), "span") %></li>
 </ul>

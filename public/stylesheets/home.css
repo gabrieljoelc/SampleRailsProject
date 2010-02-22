@@ -1,30 +1,99 @@
+#header {
+	margin-bottom:-48px;
+}
+
 #content {
 	background:#312829;
 	color:#FFF;
-	height:325px;
+	height:300px;
 	overflow:auto;
 	padding:10px;
 	position:relative;
 }
 
 #main_nav {
-	background:#312829;
+	background:#312829 url(/images/nav_bg.png) no-repeat;
 	border-right:5px solid #fff;
 	color:#FFF;
 	float:left;
-	height:325px;
-	overflow:auto;
+	height:300px;
+	overflow:hidden;
 	padding:10px 0 10px 20px;
 	position:relative;
 	width:165px;
 }
 
-#main_nav li, #main_nav a:hover {
-	color:#00FF7F;
+#main_nav li {
+	display:block;
+	position:absolute;
 }
 
-#main_nav a{
-	color:#FFF;
+#main_nav a {
+	display:block;
+}
+
+#main_nav li a span, #main_nav li span {
+	display:none;
+}
+
+#about {
+	height:33px;
+	left:0;
+	top:0;
+	width:105px;
+}
+
+#photography {
+	height:35px;
+	left:0;
+	top:33px;
+	width:163px;
+}
+
+#contact {
+	height:96px;
+	left:22px;
+	top:216px;
+	width:24px;
+}
+
+#faq {
+	height:42px;
+	left:61px;
+	top:272px;
+	width:43px;
+}
+
+#about a {
+	height:33px;
+}
+
+#photography a {
+	height:35px;
+}
+
+#contact a {
+	height:96px;
+}
+
+#faq a {
+	height:42px;
+}
+
+#about a:hover, #about.active {
+	background:url(/images/nav_bg.png) 0 -363px no-repeat;
+}
+
+#photography a:hover, #photography.active {
+	background:url(/images/nav_bg.png) 0 -396px no-repeat;
+}
+
+#contact a:hover, #contact.active {
+	background:url(/images/nav_bg.png) -22px -579px no-repeat;
+}
+
+#faq a:hover, #faq.active {
+	background:url(/images/nav_bg.png) -61px -635px no-repeat;
 }
 
 #footer {
