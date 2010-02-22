@@ -50,7 +50,7 @@ set :flush_cache, true
 if variables.include?(:branch)
 	set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/branches/#{branch}"
 elsif variables.include?(:tag)
-	set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/tags/#{branch}"
+	set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/tags/#{tag}"
 else
   set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/trunk"
 end
