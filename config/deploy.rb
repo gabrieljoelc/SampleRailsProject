@@ -1,3 +1,5 @@
+# for multistage environments, see
+# http://cjohansen.no/en/apache/multi_staging_environment_for_rails_using_capistrano_and_mod_rails
 set :stages, %w(staging production)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
@@ -42,9 +44,13 @@ set :flush_cache, true
 #############################################################
 #	Subversion
 #############################################################
-
+# use different command to use the branch and tags
+# (see http://www.missiondata.com/blog/ruby/84/deploying-an-svn-branch-with-capistrano/)
+# example: cap --set-before branch=testbranch  deploy
 if variables.include?(:branch)
-  set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/branches/#{branch}"
+	set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/branches/#{branch}"
+elsif variables.include?(:tag)
+	set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/tags/#{branch}"
 else
   set :repository, "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/trunk"
 end
