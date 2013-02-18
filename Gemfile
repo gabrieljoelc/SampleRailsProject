@@ -5,6 +5,6 @@ group :development, :test do
 	gem "sqlite3-ruby", :require => "sqlite3"
 end
 
-group :production db
+group :production do
 	gem 'pg'
 end
