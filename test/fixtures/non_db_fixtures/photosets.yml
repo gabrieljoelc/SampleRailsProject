@@ -1,42 +1,79 @@
-:family:
-  :id: "72157617395261080"
-  :server: "3203"
-  :secret: "34194ee562"
-  :farm: "4"
-  :title: "family"
-  :description: nil
-  :primary: "3145626806"
-  :photos_num: "17"
-  :page:
-  :per_page:
-  :pages:
-  :photos:
-
-:engagement:
-  :id: "72157617304532147"
-  :server: "3210"
-  :secret: "b669e0454e"
-  :farm: "4"
-  :title: "engagement"
-  :description: nil
-  :primary: "3144768857"
-  :photos_num: "97"
-  :page:
-  :per_page:
-  :pages:
-  :photos:
-
-:weddings:
-  :id: "72157617304522941"
-  :server: "3249"
-  :secret: "bb0214ffc4"
-  :farm: "4"
-  :title: "weddings"
-  :description: nil
-  :primary: "3145605410"
-  :photos_num: "51"
-  :page:
-  :per_page:
-  :pages:
-  :photos:
-  
+--- 
+? !ruby/symbol engagement
+: 
+  ? !ruby/symbol description
+  : nil
+  ? !ruby/symbol farm
+  : "4"
+  ? !ruby/symbol id
+  : "72157617304532147"
+  ? !ruby/symbol page
+  : ~
+  ? !ruby/symbol pages
+  : ~
+  ? !ruby/symbol per_page
+  : ~
+  ? !ruby/symbol photos
+  : ~
+  ? !ruby/symbol photos_num
+  : "97"
+  ? !ruby/symbol primary
+  : "3144768857"
+  ? !ruby/symbol secret
+  : b669e0454e
+  ? !ruby/symbol server
+  : "3210"
+  ? !ruby/symbol title
+  : engagement
+? !ruby/symbol family
+: 
+  ? !ruby/symbol description
+  : nil
+  ? !ruby/symbol farm
+  : "4"
+  ? !ruby/symbol id
+  : "72157617395261080"
+  ? !ruby/symbol page
+  : ~
+  ? !ruby/symbol pages
+  : ~
+  ? !ruby/symbol per_page
+  : ~
+  ? !ruby/symbol photos
+  : ~
+  ? !ruby/symbol photos_num
+  : "17"
+  ? !ruby/symbol primary
+  : "3145626806"
+  ? !ruby/symbol secret
+  : 34194ee562
+  ? !ruby/symbol server
+  : "3203"
+  ? !ruby/symbol title
+  : family
+? !ruby/symbol weddings
+: 
+  ? !ruby/symbol description
+  : nil
+  ? !ruby/symbol farm
+  : "4"
+  ? !ruby/symbol id
+  : "72157617304522941"
+  ? !ruby/symbol page
+  : ~
+  ? !ruby/symbol pages
+  : ~
+  ? !ruby/symbol per_page
+  : ~
+  ? !ruby/symbol photos
+  : ~
+  ? !ruby/symbol photos_num
+  : "51"
+  ? !ruby/symbol primary
+  : "3145605410"
+  ? !ruby/symbol secret
+  : bb0214ffc4
+  ? !ruby/symbol server
+  : "3249"
+  ? !ruby/symbol title
+  : weddings

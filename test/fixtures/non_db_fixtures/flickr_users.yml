@@ -1,4 +1,9 @@
-:popa_elias:
-  :id: "25376136@N08" 
-  :username: "popa_elias" 
-  :photosets: []
+--- 
+? !ruby/symbol popa_elias
+: 
+  ? !ruby/symbol id
+  : 25376136@N08
+  ? !ruby/symbol photosets
+  : []
+  ? !ruby/symbol username
+  : popa_elias

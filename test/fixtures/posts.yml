@@ -1,11 +1,9 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
+--- 
+one: 
+  body: "this is the first time i have doodied"
   id: 1
   title: "doody 1"
-  body: "this is the first time i have doodied"
-
-two:
+two: 
+  body: "this is the second time i have doodied"
   id: 2
   title: "DOODY 2"
-  body: "this is the second time i have doodied"
