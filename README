@@ -2,3 +2,5 @@ SampleRailsProject
 =======================
 
 This is a Ruby on Rails website I worked on for photographer friend of mine, but the site is now defunct. I am keeping it around for posterity.
+
+This project allowed me to play around with RoR areas, nested layouts, and calling APIs. It uses a Flickr mixin to call the Flickr API for the photos. This project doesn't even have a database because all the content is static or pulled from Flickr. Thinking back now, I probably could have just created this site with Ruby Rack...
